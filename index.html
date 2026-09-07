@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+
+<title>Roya Nail Studio</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    box-sizing:border-box;
+    -webkit-tap-highlight-color:transparent;
+}
+
+body{
+    margin:0;
+    font-family:Vazirmatn,sans-serif;
+    min-height:100vh;
+    color:#4b3a43;
+    background:
+        linear-gradient(135deg,rgba(255,235,243,.88),rgba(250,226,235,.92)),
+        url("bg.jpg") center/cover fixed;
+}
+
+.container{
+    width:min(94%,520px);
+    margin:auto;
+    padding:25px 0 45px;
+}
+
+.header{
+    text-align:center;
+    margin-bottom:22px;
+}
+
+.logo{
+    width:76px;
+    height:76px;
+    margin:auto;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(255,255,255,.65);
+    border:1px solid rgba(255,255,255,.8);
+    box-shadow:0 12px 35px rgba(150,90,110,.15);
+    font-size:34px;
+}
+
+.header h1{
+    margin:12px 0 4px;
+    font-size:25px;
+}
+
+.header p{
+    margin:0;
+    color:#94727e;
+    font-size:13px;
+}
+
+.card{
+    background:rgba(255,255,255,.72);
+    backdrop-filter:blur(18px);
+    border:1px solid rgba(255,255,255,.85);
+    border-radius:25px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 15px 45px rgba(145,83,105,.12);
+}
+
+.title{
+    font-size:16px;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+label{
+    display:block;
+    margin:10px 0 6px;
+    font-size:13px;
+    color:#765b65;
+}
+
+input{
+    width:100%;
+    border:1px solid #efd8e0;
+    background:rgba(255,255,255,.8);
+    padding:13px;
+    border-radius:14px;
+    outline:none;
+    font-family:inherit;
+    color:#4b3a43;
+}
+
+input:focus{
+    border-color:#d999ad;
+    box-shadow:0 0 0 3px rgba(217,153,173,.12);
+}
+
+.services{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.service{
+    border:1px solid #efdce3;
+    background:rgba(255,255,255,.65);
+    border-radius:17px;
+    padding:13px;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.service.active{
+    border-color:#d78fa7;
+    background:#fff0f5;
+    transform:translateY(-1px);
+}
+
+.service-name{
+    font-size:13px;
+    font-weight:600;
+}
+
+.service-price{
+    margin-top:5px;
+    font-size:12px;
+    color:#a26c7e;
+}
+
+.slots{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:8px;
+}
+
+.slot{
+    border:1px solid #efdce3;
+    background:white;
+    border-radius:12px;
+    padding:10px 5px;
+    text-align:center;
+    cursor:pointer;
+    font-family:inherit;
+}
+
+.slot.active{
+    background:#d994ab;
+    color:white;
+    border-color:#d994ab;
+}
+
+.slot.disabled{
+    opacity:.35;
+    cursor:not-allowed;
+    text-decoration:line-through;
+}
+
+.total{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:#fff1f5;
+    padding:14px;
+    border-radius:15px;
+    margin-top:15px;
+}
+
+.total strong{
+    color:#b7637e;
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:16px;
+    padding:14px;
+    font-family:inherit;
+    font-weight:700;
+    font-size:14px;
+    cursor:pointer;
+}
+
+.primary{
+    background:linear-gradient(135deg,#d58ba5,#bb6e89);
+    color:white;
+    box-shadow:0 10px 25px rgba(190,105,135,.2);
+}
+
+.secondary{
+    background:#fff0f5;
+    color:#a45d76;
+    margin-top:10px;
+}
+
+.notice{
+    text-align:center;
+    padding:15px;
+    border-radius:15px;
+    background:#fff2f5;
+    color:#a25f75;
+    font-size:13px;
+}
+
+.hidden{
+    display:none!important;
+}
+
+.success{
+    text-align:center;
+}
+
+.success-icon{
+    font-size:50px;
+}
+
+.success h2{
+    margin:10px 0;
+}
+
+.info{
+    background:#fff5f7;
+    border-radius:17px;
+    padding:15px;
+    margin-top:15px;
+    line-height:2;
+    font-size:13px;
+}
+
+.footer{
+    text-align:center;
+    color:#a17b87;
+    font-size:11px;
+    margin-top:18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="header">
+        <div class="logo">💅🏻</div>
+        <h1>Roya Nail Studio</h1>
+        <p>زیبایی، ظرافت و حس خوب ✨</p>
+    </div>
+
+    <div id="bookingPage">
+
+        <div class="card">
+
+            <div class="title">👩 اطلاعات شما</div>
+
+            <label>نام و نام خانوادگی</label>
+            <input id="name" type="text" placeholder="مثلاً سارا محمدی">
+
+            <label>شماره موبایل</label>
+            <input id="phone" type="tel" placeholder="09xxxxxxxxx">
+
+        </div>
+
+        <div class="card">
+
+            <div class="title">💅 انتخاب خدمات</div>
+
+            <div id="services" class="services"></div>
+
+            <div class="total">
+                <span>هزینه تقریبی</span>
+                <strong id="total">0 تومان</strong>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="title">📅 انتخاب روز</div>
+
+            <input id="date" type="date">
+
+            <div id="dateMessage" class="notice hidden" style="margin-top:12px;"></div>
+
+        </div>
+
+        <div id="timeCard" class="card hidden">
+
+            <div class="title">⏰ انتخاب ساعت</div>
+
+            <div id="slots" class="slots"></div>
+
+        </div>
+
+        <div class="card">
+
+            <button class="primary" onclick="submitBooking()">
+                ثبت درخواست نوبت 🌸
+            </button>
+
+            <button class="secondary" onclick="showStatus()">
+                پیگیری آخرین درخواست
+            </button>
+
+        </div>
+
+    </div>
+
+    <div id="successPage" class="card success hidden">
+
+        <div class="success-icon">🌸</div>
+
+        <h2>درخواست ثبت شد</h2>
+
+        <p>درخواست شما برای بررسی ارسال شد.</p>
+
+        <div id="successInfo" class="info"></div>
+
+        <button class="secondary" onclick="location.reload()">
+            بازگشت
+        </button>
+
+    </div>
+
+    <div id="statusPage" class="card hidden">
+
+        <div class="title">📋 وضعیت درخواست</div>
+
+        <div id="statusContent" class="info"></div>
+
+        <button class="secondary" onclick="location.reload()">
+            بازگشت
+        </button>
+
+    </div>
+
+    <div class="footer">
+        Roya Nail Studio • _roya021_
+    </div>
+
+</div>
+
+<script>
+
+const API="http://127.0.0.1:5000/api";
+
+let services=[];
+let settings={};
+let selectedServices=[];
+let selectedTime=null;
+let lastBookingId=localStorage.getItem("roya_last_booking") || null;
+
+
+async function api(url,options={}){
+
+    const response=await fetch(API+url,{
+        headers:{
+            "Content-Type":"application/json",
+            ...(options.headers||{})
+        },
+        ...options
+    });
+
+    let data={};
+
+    try{
+        data=await response.json();
+    }catch{}
+
+    if(!response.ok){
+        throw new Error(data.error || "خطا در ارتباط با سرور");
+    }
+
+    return data;
+}
+
+
+function formatPrice(num){
+    return Number(num).toLocaleString("fa-IR")+" تومان";
+}
+
+
+async function loadSettings(){
+
+    settings=await api("/settings");
+
+    settings.dailyLimit=Number(settings.daily_limit ?? 4);
+    settings.opening=settings.opening_time || "10:00";
+    settings.closing=settings.closing_time || "20:00";
+    settings.slotInterval=Number(settings.interval ?? 60);
+    settings.holidays=settings.holidays || [];
+    settings.address=settings.address || "آدرس هنوز توسط مدیریت تنظیم نشده است.";
+    settings.instagram=settings.instagram || "_roya021_";
+
+}
+
+
+async function loadServices(){
+
+    const data=await api("/services");
+
+    services=Object.entries(data).map(([name,price],index)=>({
+
+        id:"service_"+index,
+        name:name,
+        price:Number(price)
+
+    }));
+
+}
+
+
+async function init(){
+
+    try{
+
+        await loadSettings();
+        await loadServices();
+
+        renderServices();
+
+        const dateInput=document.getElementById("date");
+
+        dateInput.min=new Date().toISOString().split("T")[0];
+
+        dateInput.addEventListener("change",renderSlots);
+
+    }catch(error){
+
+        alert("اتصال به سرور برقرار نشد.\n\n"+error.message);
+
+    }
+
+}
+
+
+function renderServices(){
+
+    const box=document.getElementById("services");
+
+    box.innerHTML="";
+
+    services.forEach(service=>{
+
+        const div=document.createElement("div");
+
+        div.className="service";
+
+        div.innerHTML=`
+            <div class="service-name">${service.name}</div>
+            <div class="service-price">${formatPrice(service.price)}</div>
+        `;
+
+        div.onclick=()=>{
+
+            if(selectedServices.includes(service.id)){
+
+                selectedServices=
+                    selectedServices.filter(x=>x!==service.id);
+
+                div.classList.remove("active");
+
+            }else{
+
+                selectedServices.push(service.id);
+
+                div.classList.add("active");
+
+            }
+
+            updateTotal();
+
+        };
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+function updateTotal(){
+
+    let total=0;
+
+    services.forEach(service=>{
+
+        if(selectedServices.includes(service.id)){
+            total+=service.price;
+        }
+
+    });
+
+    document.getElementById("total").textContent=
+        formatPrice(total);
+
+}
+
+
+function isHoliday(date){
+
+    return settings.holidays.includes(date);
+
+}
+
+
+function generateSlots(){
+
+    let result=[];
+
+    let [sh,sm]=settings.opening.split(":").map(Number);
+    let [eh,em]=settings.closing.split(":").map(Number);
+
+    let start=sh*60+sm;
+    let end=eh*60+em;
+
+    for(
+        let t=start;
+        t<end;
+        t+=settings.slotInterval
+    ){
+
+        const h=Math.floor(t/60);
+        const m=t%60;
+
+        result.push(
+            String(h).padStart(2,"0")+":"+
+            String(m).padStart(2,"0")
+        );
+
+    }
+
+    return result;
+
+}
+
+
+async function renderSlots(){
+
+    const date=document.getElementById("date").value;
+
+    const card=document.getElementById("timeCard");
+    const box=document.getElementById("slots");
+    const message=document.getElementById("dateMessage");
+
+    selectedTime=null;
+    box.innerHTML="";
+
+    if(!date){
+
+        card.classList.add("hidden");
+        return;
+
+    }
+
+    if(isHoliday(date)){
+
+        card.classList.add("hidden");
+
+        message.textContent=
+            "🌸 این روز تعطیل است.";
+
+        message.classList.remove("hidden");
+
+        return;
+
+    }
+
+    try{
+
+        const availability=
+            await api("/availability/"+date);
+
+        if(availability.full){
+
+            card.classList.add("hidden");
+
+            message.textContent=
+                "🔴 ظرفیت این روز تکمیل شده است.";
+
+            message.classList.remove("hidden");
+
+            return;
+
+        }
+
+        message.classList.add("hidden");
+        card.classList.remove("hidden");
+
+        const bookings=
+            await api("/bookings?date="+encodeURIComponent(date));
+
+        generateSlots().forEach(time=>{
+
+            const button=document.createElement("button");
+
+            button.className="slot";
+            button.textContent=time;
+
+            const occupied=bookings.some(b=>
+                b.time===time &&
+                b.status!=="rejected"
+            );
+
+            if(occupied){
+
+                button.classList.add("disabled");
+                button.disabled=true;
+
+            }else{
+
+                button.onclick=()=>{
+
+                    document
+                        .querySelectorAll(".slot")
+                        .forEach(x=>
+                            x.classList.remove("active")
+                        );
+
+                    button.classList.add("active");
+
+                    selectedTime=time;
+
+                };
+
+            }
+
+            box.appendChild(button);
+
+        });
+
+    }catch(error){
+
+        card.classList.add("hidden");
+
+        message.textContent=
+            "⚠️ دریافت زمان‌های خالی ناموفق بود.";
+
+        message.classList.remove("hidden");
+
+    }
+
+}
+
+
+async function submitBooking(){
+
+    const name=
+        document.getElementById("name").value.trim();
+
+    const phone=
+        document.getElementById("phone").value.trim();
+
+    const date=
+        document.getElementById("date").value;
+
+    if(!name){
+
+        alert("لطفاً نام و نام خانوادگی را وارد کنید.");
+        return;
+
+    }
+
+    if(!/^09\d{9}$/.test(phone)){
+
+        alert("شماره موبایل را صحیح وارد کنید.");
+        return;
+
+    }
+
+    if(selectedServices.length===0){
+
+        alert("حداقل یک خدمت انتخاب کنید.");
+        return;
+
+    }
+
+    if(!date){
+
+        alert("لطفاً روز را انتخاب کنید.");
+        return;
+
+    }
+
+    if(isHoliday(date)){
+
+        alert("این روز تعطیل است.");
+        return;
+
+    }
+
+    if(!selectedTime){
+
+        alert("لطفاً ساعت را انتخاب کنید.");
+        return;
+
+    }
+
+    const serviceNames=selectedServices.map(id=>{
+
+        const service=
+            services.find(s=>s.id===id);
+
+        return service ? service.name : "";
+
+    }).filter(Boolean);
+
+    try{
+
+        const result=await api("/bookings",{
+
+            method:"POST",
+
+            body:JSON.stringify({
+
+                name:name,
+
+                phone:phone,
+
+                services:serviceNames,
+
+                date:date,
+
+                time:selectedTime,
+
+                note:""
+
+            })
+
+        });
+
+        const booking=result.booking;
+
+        lastBookingId=booking.id;
+
+        localStorage.setItem(
+            "roya_last_booking",
+            booking.id
+        );
+
+        document
+            .getElementById("bookingPage")
+            .classList.add("hidden");
+
+        document
+            .getElementById("successPage")
+            .classList.remove("hidden");
+
+        document.getElementById("successInfo").innerHTML=`
+
+            <b>نام:</b> ${booking.name}<br>
+
+            <b>تاریخ:</b> ${booking.date}<br>
+
+            <b>ساعت:</b> ${booking.time}<br>
+
+            <b>خدمات:</b> ${booking.services.join("، ")}<br>
+
+            <b>هزینه:</b> ${formatPrice(booking.total)}<br>
+
+            <b>وضعیت:</b> ⏳ در انتظار تأیید
+
+        `;
+
+    }catch(error){
+
+        if(error.message==="daily_limit"){
+
+            alert("ظرفیت این روز تکمیل شده است.");
+
+        }else if(error.message==="time_unavailable"){
+
+            alert("این ساعت قبلاً گرفته شده است.");
+
+        }else if(error.message==="holiday"){
+
+            alert("این روز تعطیل است.");
+
+        }else{
+
+            alert("ثبت درخواست انجام نشد.\n\n"+error.message);
+
+        }
+
+        renderSlots();
+
+    }
+
+}
+
+
+async function showStatus(){
+
+    document
+        .getElementById("bookingPage")
+        .classList.add("hidden");
+
+    document
+        .getElementById("statusPage")
+        .classList.remove("hidden");
+
+    const box=
+        document.getElementById("statusContent");
+
+    if(!lastBookingId){
+
+        box.innerHTML=
+            "هنوز درخواستی ثبت نکرده‌اید.";
+
+        return;
+
+    }
+
+    try{
+
+        const booking=
+            await api(
+                "/bookings/"+
+                encodeURIComponent(lastBookingId)
+            );
+
+        let statusText="";
+
+        if(booking.status==="pending"){
+            statusText="⏳ در انتظار تأیید";
+        }
+
+        if(booking.status==="approved"){
+            statusText="✅ نوبت شما تأیید شده است";
+        }
+
+        if(booking.status==="rejected"){
+            statusText="❌ درخواست رد شده است";
+        }
+
+        box.innerHTML=`
+
+            <b>نام:</b> ${booking.name}<br>
+
+            <b>تاریخ:</b> ${booking.date}<br>
+
+            <b>ساعت:</b> ${booking.time}<br>
+
+            <b>خدمات:</b>
+            ${booking.services.join("، ")}<br>
+
+            <b>هزینه:</b>
+            ${formatPrice(booking.total)}<br><br>
+
+            <strong>${statusText}</strong>
+
+            ${
+                booking.status==="approved"
+                ?
+                `<hr>
+
+                📍 <b>آدرس مراجعه:</b><br>
+                ${booking.address || settings.address}<br><br>
+
+                💬 سوالی داشتید؟<br>
+                پیج:
+                ${booking.instagram || settings.instagram}`
+                :
+                ""
+            }
+
+        `;
+
+    }catch(error){
+
+        box.innerHTML=
+            "⚠️ دریافت وضعیت درخواست ناموفق بود.";
+
+    }
+
+}
+
+
+init();
+
+</script>
+
+</body>
+</html>
