@@ -2030,22 +2030,27 @@ rel="noopener">
         <button class="plan active" data-plan="Silver" onclick="selectPlan(this)">
     <div class="planIcon">◇</div>
     <b>Silver</b>
-    <small>1 WIREGUARD HOST</small>
+    <small>2 WIREGUARD HOSTS</small>
 </button>
 <button class="plan" data-plan="Gold" onclick="selectPlan(this)">
     <div class="planIcon">◆</div>
     <b>Gold</b>
-    <small>1 WIREGUARD HOST</small>
+    <small>2 WIREGUARD HOSTS</small>
 </button>
 <button class="plan" data-plan="Platinum" onclick="selectPlan(this)">
     <div class="planIcon">◈</div>
     <b>Platinum</b>
-    <small>1 WIREGUARD HOST</small>
+    <small>2 WIREGUARD HOSTS</small>
 </button>
 <button class="plan" data-plan="Diamond" onclick="selectPlan(this)">
     <div class="planIcon">✦</div>
     <b>Diamond</b>
-    <small>1 WIREGUARD HOST</small>
+    <small>2 WIREGUARD HOSTS</small>
+</button>
+<button class="plan" data-plan="Titanium" onclick="selectPlan(this)">
+    <div class="planIcon">◇</div>
+    <b>Titanium</b>
+    <small>2 WIREGUARD HOSTS</small>
 </button>
 
     </div>
@@ -2359,9 +2364,9 @@ loop>
    DATA FROM PYTHON
 ========================= */
 
-const CONFIGS = ["[Interface]\nPrivateKey = D98Ekjjqor0VsmfiMjpVRa/q7NKRlrIIflBq2hnMH4Y=\nAddress = 10.0.0.229/24\nDNS = 1.0.0.1, 78.157.42.100\nMTU = 1420\n\n[Peer]\nPublicKey = zqdvp9YAvypnxqWY7R7bzpw2A27UpquyfcVXrhkLLe0=\nEndpoint = 88.198.232.240:51820\nAllowedIPs = 88.198.0.0/16, 88.198.232.240/32","[Interface]\nPrivateKey = SpevW7DF+eYM4tLnrtpNQ139HKN4sPEQkfVEfn0QO8M=\nAddress = 10.171.236.46/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = Yv01ATPJ9AmAeyQ+rcwM3auI3oMGaJC+k53Z7R7aPYE=\nAllowedIPs = 100.111.10.113/32\nEndpoint = 185.128.97.199:51822\nPersistentKeepalive = 25","[Interface]\nPrivateKey = 2Hya4w2T0popB7oP0jBi5mWacblXIFZNJzPFV/WLhGk=\nAddress = 185.22.43.56/32\nDNS = 1.1.1.1,1.0.0.1,2606:4700:4700::1111,2606:4700:4700::1001,77.75.230.172,94.103.124.217,85.104.158.228\nMTU = 1420\n\n[Peer]\nPublicKey = pb1TDX1vR9JVgRnoUVAqHFadWjWTzqPwv/vZoez4uV4=\nPresharedKey = yLi9TCHm4x5AeTviiCPeXsYu+p5854oJb/e0UEhcS4E=\nEndpoint = irturk.adpingor.top:992\nAllowedIPs = ::/0\nPersistentKeepalive = 25","[Interface]\nPrivateKey = bcD0qj5Djp18HS2nfmHbg12xtVbEHqtUIL2ZxmUdjg0=\nAddress = 8.124.106.178/32, 5f00::f900:0eeb:a677/32\nDNS = 8.8.8.8, 1.1.1.1, 1a1f::3789:1257:9371, 1a1f::3789:79da:97ef\nMTU = 1300\nListenPort = 35459\n\n[Peer]\nPublicKey = ljizHABvty/yXGj0wRKRN5VGwV2nrD4u5t7S3KhUuHs=\nAllowedIPs = 8.109.100.158/32, 8.99.164.205/32, 8.214.182.72/32, 8.139.38.73/32, 8.85.192.229/32, 8.80.144.179/32, 8.51.91.140/32, 8.243.34.5/32, 8.41.6.119/32, 8.152.224.115/32\nEndpoint = 16.214.129.187:35459\nPersistentKeepalive = 1"];
+const CONFIGS = ["[Interface]\nAddress = 10.8.143.96/32, 2606:4700:d0:0:f3fb:d5ad:1bbd:beda/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:3135:a72f:9d69:1b8d\nPrivateKey = XcI3Szs3Oupn+5LiVM/pyFlYt4YLw0lMTKv9C1kIqXM=\nListenPort = 53881\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.143.0/24, 10.8.143.96/32, 2606:4700:d0:0:020c:28e0:52b1:7cb6/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.162.154/32, 2606:4700:d0:0:e793:493a:fa71:4330/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:97ab:d862:d17f:a6a8\nPrivateKey = BgCfCK89jVv+wFaB5gd5pV6nX0ep8fxyTaIOtuXm5Dg=\nListenPort = 54669\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.162.0/24, 10.8.162.154/32, 2606:4700:d0:0:551d:5cb9:0407:e7c1/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.12.85/32, 2606:4700:d0:0:82b4:6079:c8ed:dd4e/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:4150:64b5:1712:9fbc\nPrivateKey = hQ+6Md5I9/0Aor4haMc5CBBCzpYQiGamJ+KuZqEP9fc=\nListenPort = 59203\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.12.0/24, 10.8.12.85/32, 2606:4700:d0:0:cfcf:ff2e:b43e:600c/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.49.74/32, 2606:4700:d0:0:0084:07b7:198b:f9db/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:acae:fac1:aec1:6064\nPrivateKey = QSwnaNyXlT7DE4r8Dd2EPt4nGncN28WrWdfWAOWBTWQ=\nListenPort = 51789\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.49.0/24, 10.8.49.74/32, 2606:4700:d0:0:c24d:fd6f:f319:24b7/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.63.90/32, 2606:4700:d0:0:399c:b7f5:adc4:f464/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:15f6:04fe:253d:2ad5\nPrivateKey = ZX81pCajK9xbAmTnpHixO+3bQVqSHaB+HsSOn6AnoXI=\nListenPort = 53909\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.63.0/24, 10.8.63.90/32, 2606:4700:d0:0:a3f5:8c56:e6ff:138d/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.64.224/32, 2606:4700:d0:0:3d75:2813:131d:a4b2/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:93c9:ff47:ab63:1697\nPrivateKey = ITAFfOABOq6JhSTIA+VKtbWVVSeMJCAVjQ26B+Swhu4=\nListenPort = 51231\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.64.0/24, 10.8.64.224/32, 2606:4700:d0:0:78e4:22bb:0cb8:60f4/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.252.165/32, 2606:4700:d0:0:07d2:449b:bb1b:1adc/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:11cb:19e2:bf7e:05b5\nPrivateKey = ZTvEIw+PhLXa5N7bTXSEVxai/KYJimffmP/dbsVaF8k=\nListenPort = 52553\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.252.0/24, 10.8.252.165/32, 2606:4700:d0:0:29a8:f6ce:a70d:2281/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.127.207/32, 2606:4700:d0:0:b5c3:d317:0207:5c90/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:304a:a401:bab0:a506\nPrivateKey = srIi73P4WfriGGKw6aPqr06xeQj6nIBI+1FTKWaSvAw=\nListenPort = 52313\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.127.0/24, 10.8.127.207/32, 2606:4700:d0:0:d720:e803:c2f8:614d/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.238.233/32, 2606:4700:d0:0:dfa9:16f0:10dd:1ea7/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:fcb1:4560:4422:a79e\nPrivateKey = lTQV031aqu+Dygf+9ZEd2kE/lVZdSypHfIuXoIJVolE=\nListenPort = 53131\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.238.0/24, 10.8.238.233/32, 2606:4700:d0:0:08d9:7abf:b981:918f/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25","[Interface]\nAddress = 10.8.156.36/32, 2606:4700:d0:0:12df:8ad2:2b26:ac68/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:caf2:ee55:a9ae:9621\nPrivateKey = 58t8k2dtfgLwrfd02dzLqh6SY7G7+sFMCj7iHWAACys=\nListenPort = 55271\nMTU = 1299\n\n[Peer]\nPublicKey = 54+b+FPgonqrFRhO7iEyo4k2YeKZfv565L73ea2nPT8=\nAllowedIPs = 10.8.156.0/24, 10.8.156.36/32, 2606:4700:d0:0:b828:df20:1351:99e9/128\nEndpoint = 188.115.7.132:51820\nPersistentKeepalive = 25"];
 
-const PLANS = [{"name":"Silver","icon":"◇","configs":[0]},{"name":"Gold","icon":"◆","configs":[1]},{"name":"Platinum","icon":"◈","configs":[2]},{"name":"Diamond","icon":"✦","configs":[3]}];
+const PLANS = [{"name":"Silver","icon":"◇","configs":[0,5]},{"name":"Gold","icon":"◆","configs":[1,6]},{"name":"Platinum","icon":"◈","configs":[2,7]},{"name":"Diamond","icon":"✦","configs":[3,8]},{"name":"Titanium","icon":"◇","configs":[4,9]}];
 
 
 let selectedPlan = "";
