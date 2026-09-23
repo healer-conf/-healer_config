@@ -257,113 +257,72 @@ body:before{
     margin:auto;
 }
 
-.gauge svg{
-    width:100%;
-    height:100%;
-    overflow:visible;
+.digitalPanel{
+    position:relative;
+    padding:20px 10px 10px;
 }
 
-.gauge-bg{
-    fill:#080808;
-    stroke:#252525;
-    stroke-width:3;
-}
-
-.gauge-inner{
-    fill:none;
-    stroke:#171717;
-    stroke-width:14;
-}
-
-.tick{
-    stroke:#888;
-    stroke-width:1.4;
-}
-
-.tick.major{
-    stroke:#eee;
-    stroke-width:2;
-}
-
-.tick.red{
-    stroke:var(--red);
-}
-
-.tickText{
-    fill:#aaa;
-    font-size:11px;
-    font-family:Arial,sans-serif;
-    text-anchor:middle;
-    dominant-baseline:middle;
-}
-
-.centerCircle{
-    fill:#0a0a0a;
-    stroke:#333;
-    stroke-width:2;
-}
-
-.needle{
-    stroke:#eee;
-    stroke-width:3;
-    stroke-linecap:round;
-    transform-origin:200px 200px;
-    transform:rotate(-135deg);
-    filter:drop-shadow(0 0 5px rgba(255,255,255,.2));
-}
-
-.needleTip{
-    fill:var(--red);
-}
-
-.centerDot{
-    fill:#ddd;
-}
-
-.unit{
-    fill:#666;
-    font-size:10px;
-    text-anchor:middle;
-    letter-spacing:2px;
-    font-family:Arial,sans-serif;
-}
-
-.digital{
-    position:absolute;
-    left:50%;
-    top:57%;
-    transform:translate(-50%,-50%);
+.digitalScreen{
     text-align:center;
+    padding:22px 10px 18px;
+    border-radius:14px;
+    background:
+        linear-gradient(180deg,#02131c,#010a10);
+    border:1px solid rgba(0,200,255,.35);
+    box-shadow:
+        inset 0 0 30px rgba(0,180,255,.18),
+        0 0 25px rgba(0,180,255,.12);
+}
+
+.digitalLabel{
+    font-size:10px;
+    letter-spacing:4px;
+    color:#4fd6ff;
+    opacity:.7;
     direction:ltr;
 }
 
-.digital strong{
-    display:block;
-    font-family:Arial,sans-serif;
-    font-size:31px;
-    letter-spacing:2px;
+.digitalNumber{
+    font-family:'Courier New',monospace;
+    font-weight:800;
+    font-size:64px;
+    letter-spacing:4px;
+    color:#5fe3ff;
+    text-shadow:
+        0 0 10px rgba(95,227,255,.9),
+        0 0 26px rgba(95,227,255,.6),
+        0 0 46px rgba(95,227,255,.35);
+    direction:ltr;
+    margin:4px 0;
+    transition:color .1s linear;
 }
 
-.digital span{
-    font-size:8px;
-    color:#666;
+.digitalUnit{
+    font-size:11px;
     letter-spacing:3px;
+    color:#4fd6ff;
+    opacity:.6;
+    direction:ltr;
 }
 
-.redline{
-    position:absolute;
-    bottom:15px;
-    left:50%;
-    transform:translateX(-50%);
-    width:100%;
-    height:2px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        var(--red),
-        transparent
-    );
-    opacity:.35;
+.eq{
+    display:flex;
+    align-items:flex-end;
+    justify-content:center;
+    gap:4px;
+    height:46px;
+    margin-top:16px;
+    padding:0 6px;
+}
+
+.eqBar{
+    flex:1 1 auto;
+    max-width:10px;
+    height:8%;
+    border-radius:3px 3px 0 0;
+    background:linear-gradient(180deg,#7ff0ff,#0091c7);
+    box-shadow:0 0 8px rgba(95,227,255,.55);
+    transition:height .07s linear;
 }
 
 /* ================= SECTIONS ================= */
@@ -699,11 +658,42 @@ body:before{
     display:flex;
     align-items:center;
     justify-content:space-between;
+    gap:10px;
     min-height:50px;
-    padding:0 14px;
+    padding:0 10px 0 14px;
     border:1px solid #222;
     background:#0d0d0d;
     direction:ltr;
+}
+
+.dnsInfo{
+    display:flex;
+    flex-direction:column;
+}
+
+.miniCopyBtn{
+    flex:0 0 auto;
+    width:34px;
+    height:34px;
+    border-radius:8px;
+    border:1px solid #333;
+    background:#111;
+    color:#5fe3ff;
+    font-size:14px;
+    cursor:pointer;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    transition:.15s;
+}
+
+.miniCopyBtn:active{
+    transform:scale(.9);
+}
+
+.miniCopyBtn.done{
+    color:#7cf29c;
+    border-color:#7cf29c;
 }
 
 .dns span{
@@ -928,75 +918,17 @@ body:before{
             </span>
         </div>
 
-        <div class="gauge">
+        <div class="digitalPanel">
 
-            <svg viewBox="0 0 400 400">
-
-                <circle
-                    cx="200"
-                    cy="200"
-                    r="174"
-                    class="gauge-bg"
-                />
-
-                <circle
-                    cx="200"
-                    cy="200"
-                    r="151"
-                    class="gauge-inner"
-                />
-
-                <g id="ticks"></g>
-                <g id="numbers"></g>
-
-                <text
-                    x="200"
-                    y="246"
-                    class="unit">
-                    KM/H
-                </text>
-
-                <line
-                    id="needle"
-                    x1="200"
-                    y1="200"
-                    x2="200"
-                    y2="65"
-                    class="needle"
-                />
-
-                <circle
-                    cx="200"
-                    cy="200"
-                    r="13"
-                    class="centerCircle"
-                />
-
-                <circle
-                    cx="200"
-                    cy="200"
-                    r="5"
-                    class="centerDot"
-                />
-
-                <circle
-                    id="needleTip"
-                    cx="200"
-                    cy="65"
-                    r="3"
-                    class="needleTip"
-                />
-
-            </svg>
-
-            <div class="digital">
-                <strong id="speedDigital">0</strong>
-                <span>KM/H</span>
+            <div class="digitalScreen">
+                <div class="digitalLabel">SPEED</div>
+                <div class="digitalNumber" id="speedDigital">000</div>
+                <div class="digitalUnit">KM/H</div>
             </div>
 
-        </div>
+            <div class="eq" id="eq"></div>
 
-        <div class="redline"></div>
+        </div>
 
     </section>
 
@@ -1064,84 +996,62 @@ body:before{
 const profiles = [
 
     {
-        id:"turkey",
-        code:"TR",
-        country:"ترکیه",
-        badge:"🇹🇷",
-        v4:[
-            "1.1.1.1",
-            "5.252.96.27"
-        ],
-        v6:[
-            "2001:49f8:c572::a631",
-            "2001:7b24:e915::3fc8"
-        ]
-    },
-
-    {
-        id:"uae",
-        code:"AE",
-        country:"امارات",
-        badge:"🇦🇪",
-        v4:[
-            "178.22.122.101",
-            "20.174.15.53"
-        ],
-        v6:[
-            "2001:a842:6f35::c917",
-            "2001:d693:21e7::8b54"
-        ],
-        variants:[
-            {
-                v4:[
-                    "178.22.122.101",
-                    "20.174.15.53"
-                ],
-                v6:[
-                    "2001:a842:6f35::c917",
-                    "2001:d693:21e7::8b54"
-                ]
-            },
-            {
-                v4:[
-                    "1.1.1.2",
-                    "40.95.239.45"
-                ],
-                v6:[
-                    "2001:4c82:a731::e5b9",
-                    "2001:91f6:2d48::7ac3"
-                ]
-            }
-        ]
-    },
-
-    {
         id:"germany",
         code:"DE",
         country:"آلمان",
         badge:"🇩🇪",
         v4:[
-            "1.1.1.1",
-            "85.192.24.48"
+            "78.157.42.100",
+            "2.16.207.57"
         ],
         v6:[
-            "2001:6d48:f392::a157",
-            "2001:c915:47e8::d603"
+            "2001:e281:5c73::9b46",
+            "2001:3a94:d627::f815"
         ]
     },
 
     {
-        id:"oman",
-        code:"OM",
-        country:"عمان",
-        badge:"🇴🇲",
+        id:"qatar",
+        code:"QA",
+        country:"قطر",
+        badge:"🇶🇦",
         v4:[
-            "9.9.9.9",
-            "62.61.191.24"
+            "78.157.42.100",
+            "154.94.99.56"
         ],
         v6:[
-            "2001:a842:6f35::c917",
-            "2001:d693:21e7::8b54"
+            "2001:625f:a831::e470",
+            "2001:e918:46d2::0c57"
+        ]
+    },
+
+    {
+        id:"china",
+        code:"CN",
+        country:"چین",
+        badge:"🇨🇳",
+        v4:[
+            "1.1.1.1",
+            "14.102.183.46"
+        ],
+        v6:[
+            "2001:4a76:ce19::812f",
+            "2001:bc03:57e4::29a6"
+        ]
+    },
+
+    {
+        id:"france",
+        code:"FR",
+        country:"فرانسه",
+        badge:"🇫🇷",
+        v4:[
+            "1.1.1.1",
+            "5.10.135.24"
+        ],
+        v6:[
+            "2001:14cf:9a62::b578",
+            "2001:f230:5d81::6ae4"
         ]
     }
 
@@ -1159,8 +1069,8 @@ const pubgVIP = [
         code:"PUBG VIP",
         country:"PUBG VIP",
         v4:[
-            "1.1.1.1",
-            "10.183.213.29"
+            "208.67.222.188",
+            "1.1.1.1"
         ],
         v6:[
             "2606:1a40:1:a:de85:3d47:8c01:0",
@@ -1169,29 +1079,29 @@ const pubgVIP = [
         variants:[
             {
                 v4:[
-                    "1.1.1.1",
-                    "10.183.213.29"
-                ],
-                v6:[]
-            },
-            {
-                v4:[
-                    "78.157.32.100",
+                    "208.67.222.188",
                     "1.1.1.1"
                 ],
                 v6:[]
             },
             {
                 v4:[
-                    "45.90.28.190",
-                    "45.90.30.190"
+                    "151.93.224.23",
+                    "78.157.42.100"
                 ],
                 v6:[]
             },
             {
                 v4:[
-                    "209.244.0.3",
-                    "209.244.0.4"
+                    "82.222.160.101",
+                    "82.222.160.88"
+                ],
+                v6:[]
+            },
+            {
+                v4:[
+                    "1.1.1.1",
+                    "14.102.183.46"
                 ],
                 v6:[]
             },
@@ -1204,20 +1114,6 @@ const pubgVIP = [
                     "2606:1a40:1:a:de85:3d47:8c01:0",
                     "2606:1a40:0:a:de85:3d47:8c01:0"
                 ]
-            },
-            {
-                v4:[
-                    "9.9.9.9",
-                    "62.61.191.24"
-                ],
-                v6:[]
-            },
-            {
-                v4:[
-                    "208.67.222.188",
-                    "1.1.1.1"
-                ],
-                v6:[]
             }
         ]
     }
@@ -1424,135 +1320,99 @@ function selectMode(mode){
 
 
 /* =========================================================
-   GAUGE
+   DIGITAL DASHBOARD
+   به‌جای گیج آنالوگ، یک صفحه‌ی دیجیتال آبی + اکولایزر
+   که مستقیماً از روی صدای در حال پخش (Web Audio API)
+   ساخته می‌شود: هر جا صدا اوج می‌گیرد، عدد و نوارها
+   بالا می‌روند؛ هر جا آروم می‌شود، پایین می‌آیند.
 ========================================================= */
 
-const gaugeCenterX = 200;
-const gaugeCenterY = 200;
+const EQ_BAR_COUNT = 20;
 
-const startAngle = -135;
-const endAngle = 135;
+const eqContainer =
+    document.getElementById("eq");
 
-const tickGroup =
-    document.getElementById("ticks");
+for(let i=0;i<EQ_BAR_COUNT;i++){
 
-const numberGroup =
-    document.getElementById("numbers");
+    const bar =
+        document.createElement("div");
+
+    bar.className = "eqBar";
+
+    eqContainer.appendChild(bar);
+
+}
+
+const eqBars =
+    document.querySelectorAll(".eqBar");
 
 
-for(let i=0;i<=36;i++){
+/* =========================================================
+   SPEED DISPLAY
+========================================================= */
 
-    const speed = i * 10;
+function setSpeed(speed){
 
-    const angle =
-        startAngle +
-        (endAngle-startAngle)*(i/36);
-
-    const rad =
-        angle*Math.PI/180;
-
-    const outerR = 157;
-
-    const innerR =
-        i % 3 === 0
-        ? 142
-        : 148;
-
-    const x1 =
-        gaugeCenterX +
-        Math.cos(rad)*innerR;
-
-    const y1 =
-        gaugeCenterY +
-        Math.sin(rad)*innerR;
-
-    const x2 =
-        gaugeCenterX +
-        Math.cos(rad)*outerR;
-
-    const y2 =
-        gaugeCenterY +
-        Math.sin(rad)*outerR;
-
-    const line =
-        document.createElementNS(
-            "http://www.w3.org/2000/svg",
-            "line"
+    const clamped =
+        Math.max(
+            0,
+            Math.min(999, Math.round(speed))
         );
 
-    line.setAttribute("x1",x1);
-    line.setAttribute("y1",y1);
-    line.setAttribute("x2",x2);
-    line.setAttribute("y2",y2);
+    document
+        .getElementById("speedDigital")
+        .textContent =
+        String(clamped).padStart(3,"0");
 
-    line.classList.add("tick");
-
-    if(i % 3 === 0)
-        line.classList.add("major");
-
-    if(speed >= 300)
-        line.classList.add("red");
-
-    tickGroup.appendChild(line);
-
-
-    if(i % 3 === 0){
-
-        const text =
-            document.createElementNS(
-                "http://www.w3.org/2000/svg",
-                "text"
-            );
-
-        const textR = 126;
-
-        const tx =
-            gaugeCenterX +
-            Math.cos(rad)*textR;
-
-        const ty =
-            gaugeCenterY +
-            Math.sin(rad)*textR;
-
-        text.setAttribute("x",tx);
-        text.setAttribute("y",ty);
-
-        text.textContent = speed;
-
-        text.classList.add("tickText");
-
-        numberGroup.appendChild(text);
-
-    }
+    document
+        .getElementById("speedTop")
+        .textContent = clamped;
 
 }
 
 
 /* =========================================================
-   SPEED ANIMATION
+   WEB AUDIO ANALYSER
+   یک بار ساخته می‌شود و به همون فایل صوتی وصل می‌مونه
 ========================================================= */
 
-function setSpeed(speed){
+let audioCtx = null;
+let analyser = null;
+let freqData = null;
 
-    const angle =
-        startAngle +
-        (endAngle-startAngle)*
-        (speed/360);
+function ensureAudioAnalyser(){
 
-    document
-        .getElementById("needle")
-        .style.transform =
-        `rotate(${angle + 90}deg)`;
+    if(audioCtx) return;
 
-    document
-        .getElementById("speedDigital")
-        .textContent =
-        Math.round(speed);
+    try{
 
-    document
-        .getElementById("speedTop")
-        .textContent =
-        Math.round(speed);
+        const AudioContextClass =
+            window.AudioContext ||
+            window.webkitAudioContext;
+
+        audioCtx = new AudioContextClass();
+
+        const source =
+            audioCtx.createMediaElementSource(
+                document.getElementById("supraSound")
+            );
+
+        analyser = audioCtx.createAnalyser();
+        analyser.fftSize = 64;
+
+        source.connect(analyser);
+        analyser.connect(audioCtx.destination);
+
+        freqData =
+            new Uint8Array(analyser.frequencyBinCount);
+
+    }catch(e){
+
+        console.log(
+            "Web Audio API not available:", e
+        );
+
+    }
 
 }
 
@@ -1716,9 +1576,15 @@ function buildDNS(){
 
 
     /*
-       پخش صدا هم‌زمان با شروع حرکت عقربه
-       (نه در انتها)
+       پخش صدا هم‌زمان با شروع کار
+       (نه در انتها) + فعال‌سازی آنالایزر صدا
     */
+
+    ensureAudioAnalyser();
+
+    if(audioCtx && audioCtx.state === "suspended"){
+        audioCtx.resume();
+    }
 
     const sound =
         document.getElementById("supraSound");
@@ -1776,16 +1642,56 @@ function buildDNS(){
 
 
         /*
-           حرکت خطی و آرام؛ بدون شتاب اولیه‌ی تند،
-           تا کیلومتر شمار سریع پر نشود و حس هم‌زمانی
-           با صدا حفظ شود.
+           اگر آنالایزر صدا در دسترس باشد، عدد و
+           نوارهای اکولایزر مستقیماً از روی انرژی
+           واقعی صدا در همین لحظه ساخته می‌شوند —
+           یعنی دقیقاً در اوج صدا بالا می‌روند و در
+           سکوت/افت صدا پایین می‌آیند.
         */
 
-        const speed =
-            progress*360;
+        if(analyser && freqData){
 
+            analyser.getByteFrequencyData(freqData);
 
-        setSpeed(speed);
+            let sum = 0;
+
+            for(let i=0;i<freqData.length;i++){
+                sum += freqData[i];
+            }
+
+            const avg = sum / freqData.length;
+
+            const speed = (avg / 255) * 240;
+
+            setSpeed(speed);
+
+            const barCount = eqBars.length;
+
+            const step =
+                Math.floor(freqData.length / barCount) || 1;
+
+            eqBars.forEach((bar, i) => {
+
+                const value =
+                    freqData[i * step] || 0;
+
+                const pct =
+                    Math.max(6, (value / 255) * 100);
+
+                bar.style.height = pct + "%";
+
+            });
+
+        }else{
+
+            /*
+               اگر Web Audio در دسترس نبود (مرورگر
+               قدیمی)، به حرکت نرم قبلی برمی‌گردیم
+            */
+
+            setSpeed(progress * 220);
+
+        }
 
 
         if(progress < 1){
@@ -1794,7 +1700,11 @@ function buildDNS(){
 
         }else{
 
-            setSpeed(360);
+            setSpeed(0);
+
+            eqBars.forEach(bar => {
+                bar.style.height = "8%";
+            });
 
             finishBuild(finalProfile);
 
@@ -1887,11 +1797,18 @@ function showOutput(profile){
 
             item.innerHTML = `
 
-                <span>${ip}</span>
+                <div class="dnsInfo">
+                    <span>${ip}</span>
+                    <small>
+                        ${family} ${index+1}
+                    </small>
+                </div>
 
-                <small>
-                    ${family} ${index+1}
-                </small>
+                <button
+                    class="miniCopyBtn"
+                    onclick="copySingleIP(this,'${ip}')">
+                    ⧉
+                </button>
 
             `;
 
@@ -1948,6 +1865,38 @@ function showOutput(profile){
         });
 
     },100);
+
+}
+
+
+/* =========================================================
+   COPY SINGLE IP
+========================================================= */
+
+function copySingleIP(btn, ip){
+
+    navigator.clipboard
+        .writeText(ip)
+        .then(() => {
+
+            const old = btn.textContent;
+
+            btn.textContent = "✓";
+            btn.classList.add("done");
+
+            setTimeout(() => {
+                btn.textContent = old;
+                btn.classList.remove("done");
+            },1100);
+
+        })
+        .catch(() => {
+
+            alert(
+                "کپی خودکار توسط مرورگر انجام نشد."
+            );
+
+        });
 
 }
 
