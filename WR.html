@@ -2042,11 +2042,6 @@ rel="noopener">
     <b>Platinum</b>
     <small>1 WIREGUARD HOST</small>
 </button>
-<button class="plan" data-plan="Diamond" onclick="selectPlan(this)">
-    <div class="planIcon">✦</div>
-    <b>Diamond</b>
-    <small>1 WIREGUARD HOST</small>
-</button>
 
     </div>
 
@@ -2359,9 +2354,9 @@ loop>
    DATA FROM PYTHON
 ========================= */
 
-const CONFIGS = ["[Interface]\nAddress = 10.8.136.152/32, 2606:4700:d0:0:f84d:03ab:7b10:ec95/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:4953:234e:650b:95c9\nPrivateKey = UdTOJFESkqh0DmBPEKXEcMKf50jiVj8EoPkgFkjUx1k=\nListenPort = 59179\nMTU = 1299\n\n[Peer]\nPublicKey = 5rCymY7nasjGG5do2WH44jDBC8aw7cQfb3X67sTTeCQ=\nAllowedIPs = 10.8.136.0/24, 10.8.136.152/32, 2606:4700:d0:0:a632:31d6:7a83:fc03/128\nEndpoint = 188.115.240.210:51820\nPersistentKeepalive = 25\n\n[Peer]\nPublicKey = 5rCymY7nasjGG5do2WH44jDBC8aw7cQfb3X67sTTeCQ=\nEndpoint = 162.159.8.24:51820\nAllowedIPs = 10.8.136.0/24, 10.8.136.152/32, 2606:4700:d0:0:a632:31d6:7a83:fc03/128","[Interface]\nPrivateKey = bcD0qj5Djp18HS2nfmHbg12xtVbEHqtUIL2ZxmUdjg0=\nAddress = 8.228.38.73/32, 5f00::f900:0c67:1b45/32\nDNS = 8.8.8.8, 1.1.1.1, 1a1f::3789:809d:e550, 1a1f::3789:97f7:4d5a\nMTU = 1300\nListenPort = 18701\n\n[Peer]\nPublicKey = ljizHABvty/yXGj0wRKRN5VGwV2nrD4u5t7S3KhUuHs=\nAllowedIPs = 8.42.208.41/32, 8.149.203.76/32, 8.182.133.196/32, 8.237.87.86/32, 8.132.175.102/32, 8.102.7.12/32, 8.213.96.76/32, 8.198.30.79/32, 8.213.217.5/32, 8.37.33.208/32\nEndpoint = 57.151.231.182:18701\nPersistentKeepalive = 1","[Interface]\nPrivateKey = bcD0qj5Djp18HS2nfmHbg12xtVbEHqtUIL2ZxmUdjg0=\nAddress = 8.60.193.50/32, 5f00::f900:070d:bc51/32\nDNS = 8.8.8.8, 1.1.1.1, 1a1f::3789:a595:96c6, 1a1f::3789:721d:841e\nMTU = 1300\nListenPort = 18475\n\n[Peer]\nPublicKey = ljizHABvty/yXGj0wRKRN5VGwV2nrD4u5t7S3KhUuHs=\nAllowedIPs = 8.201.95.1/32, 8.34.242.178/32, 8.187.145.80/32, 8.169.230.223/32, 8.246.102.135/32, 8.72.238.112/32, 8.123.144.22/32, 8.107.191.188/32, 8.220.204.240/32, 8.248.63.12/32\nEndpoint = 149.235.122.138:18475\nPersistentKeepalive = 1","[Interface]\nPrivateKey = bcD0qj5Djp18HS2nfmHbg12xtVbEHqtUIL2ZxmUdjg0=\nAddress = 8.119.117.181/32, 5f00::f900:2ee5:56b9/32\nDNS = 8.8.8.8, 1.1.1.1, 1a1f::3789:6875:5621, 1a1f::3789:ec9a:44ae\nMTU = 1300\nListenPort = 3711\n\n[Peer]\nPublicKey = ljizHABvty/yXGj0wRKRN5VGwV2nrD4u5t7S3KhUuHs=\nAllowedIPs = 8.119.13.83/32, 8.240.102.2/32, 8.247.139.135/32, 8.240.195.130/32, 8.202.103.144/32, 8.249.139.211/32, 8.239.241.12/32, 8.177.15.150/32, 8.114.229.168/32, 8.126.216.72/32\nEndpoint = 86.131.218.176:3711\nPersistentKeepalive = 1"];
+const CONFIGS = ["[Interface]\nPrivateKey = TrUak5/t5TZSm2rvbQs6IC5aDC2voF6KvgvWz0OBAdY=\nAddress = 10.85.40.169/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = Hd1ZVlSFCVRqLTA2dzf24ULThRPPV6dLj9D+gY4wQsw=\nAllowedIPs = 209.224.68.70/32, 100.74.188.58/32\nEndpoint = 185.128.97.199:51820\nPersistentKeepalive = 25","[Interface]\nPrivateKey = Rn78U+tOq/9O/Gm9Dk7XolimcNq2DjIg2hgZ5u1N9DY=\nAddress = 10.235.23.103/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = 0cDC97A5GLNyGc29MlMnb2am0Fb4HcgEnmtnm4h4EYw=\nAllowedIPs = 179.180.211.52/32, 219.193.241.80/32, 172.26.161.191/32\nEndpoint = 8.8.8.8:51825\nPersistentKeepalive = 25","[Interface]\nPrivateKey = 5ApWKFZuaea5SeifNHw//cM4TOuO8UhMQRxwd/b0h6w=\nAddress = 10.195.199.220/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = 0Ho62nw1OZ5De+hAh8+xEuTNgEMsP0Vh8t5f0E3oA8Y=\nAllowedIPs = 156.17.219.108/32, 192.168.69.218/32, 186.60.122.209/32\nEndpoint = 8.8.8.8:51831\nPersistentKeepalive = 25"];
 
-const PLANS = [{"name":"Silver","icon":"◇","configs":[0]},{"name":"Gold","icon":"◆","configs":[1]},{"name":"Platinum","icon":"◈","configs":[2]},{"name":"Diamond","icon":"✦","configs":[3]}];
+const PLANS = [{"name":"Silver","icon":"◇","configs":[0]},{"name":"Gold","icon":"◆","configs":[1]},{"name":"Platinum","icon":"◈","configs":[2]}];
 
 
 let selectedPlan = "";
