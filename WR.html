@@ -2047,11 +2047,6 @@ rel="noopener">
     <b>Diamond</b>
     <small>1 WIREGUARD HOST</small>
 </button>
-<button class="plan" data-plan="Titanium" onclick="selectPlan(this)">
-    <div class="planIcon">◇</div>
-    <b>Titanium</b>
-    <small>1 WIREGUARD HOST</small>
-</button>
 
     </div>
 
@@ -2364,9 +2359,9 @@ loop>
    DATA FROM PYTHON
 ========================= */
 
-const CONFIGS = ["[Interface]\nPrivateKey = BS1DnSWqKNycRzXetoaSaSleAQYanV/pbNNaeNB2a+s=\nAddress = 10.29.174.209/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = UPLYX4wpWTzZgqL5fIkTZOS77Ona6V3jiDBRwUnooJc=\nAllowedIPs = 202.190.137.133/32, 172.18.176.31/32\nEndpoint = 185.128.97.199:51828\nPersistentKeepalive = 25","[Interface]\nPrivateKey = +kXc7YKxc867mnbMsT2mJA379p0s6bThTkbVwFsiRo8=\nAddress = 10.208.46.82/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = gcOMMXC1fQGyqPCFc32ZN5WAstzbdKSkrIAUoBJYWWg=\nAllowedIPs = 134.9.225.220/32\nEndpoint = 1.1.1.1:51830\nPersistentKeepalive = 25","[Interface]\nAddress = 77.75.95.42/32\nDNS = 77.75.95.42, 78.157.42.100\nMTU = 1200\nPrivateKey = CO7M0rRo9Xs2khBGHgC4MCBT3TIOaJ/nltVLz972+WE=\n\n[Peer]\nAllowedIPs = 77.75.95.42/32\nPersistentKeepalive = 25\nPublicKey = NQ091wE6Qn6T+mGdGgS2cE64pISymljOUhrxZ79qpBM=","[Interface]\nAddress = 10.8.208.110/32, 2606:4700:d0:0:8fa4:3fb7:2fbf:59c8/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:c3a6:a287:08a3:f443\nPrivateKey = Dg5wcKOL261jikqFfdVTmyrK0q/dorvtST1NlMANVw8=\nListenPort = 51051\nMTU = 1299\n\n[Peer]\nPublicKey = Cr54gClrfPYT6MG+T35RlahNRgpIB3HR//vVmMGT3Cg=\nAllowedIPs = 10.8.208.0/24, 10.8.208.110/32, 2606:4700:d0:0:d817:7e21:ed0e:ace6/128\nEndpoint = 188.115.40.140:51820\nPersistentKeepalive = 25\n\n[Peer]\nPublicKey = Cr54gClrfPYT6MG+T35RlahNRgpIB3HR//vVmMGT3Cg=\nEndpoint = 162.159.63.126:51820\nAllowedIPs = 10.8.208.0/24, 10.8.208.110/32, 2606:4700:d0:0:d817:7e21:ed0e:ace6/128","[Interface]\nPrivateKey = 4KOyPlqz+BmPkPV0+Y3AUWRWdZ92PVujX6gQhqkqdXY=\nAddress = 172.16.0.2/32\nDNS = 10.202.10.10, 106.52.207.90\nMTU = 1420\n\n[Peer]\nPublicKey = Pu8rGqHuUVBt91wV3IeNYi9FVoxL0Jw8MGROL4Hh2Bc=\nAllowedIPs = 48.189.48.210/32, 21a7:cd64:6486:3b9a:ddc0:344e:2cf3:b586/128\nEndpoint = 185.93.245.19:52752\nPersistentKeepalive = 11"];
+const CONFIGS = ["[Interface]\nPrivateKey = ZhpuMeYPqou7Ap+BPc/9MV454tgPw3WURDsuU8VyD2Q=\nAddress = 10.154.193.13/32\nDNS = 1.1.1.1, 8.8.8.8\nMTU = 1420\n\n[Peer]\nPublicKey = 7sIsAbiJ336rmPyrZGm2GcMEQnrHYgy3095HDhGug5o=\nAllowedIPs = 172.26.74.61/32, 90.232.4.126/32\nEndpoint = 185.128.97.199:51822\nPersistentKeepalive = 25","[Interface]\nAddress = 77.75.95.42/32\nDNS = 77.75.95.42, 78.157.42.100\nMTU = 1200\nPrivateKey = CO7M0rRo9Xs2khBGHgC4MCBT3TIOaJ/nltVLz972+WE=\n\n[Peer]\nAllowedIPs = 77.75.95.42/32\nPersistentKeepalive = 25\nPublicKey = NQ091wE6Qn6T+mGdGgS2cE64pISymljOUhrxZ79qpBM=","[Interface]\nAddress = 10.8.208.110/32, 2606:4700:d0:0:8fa4:3fb7:2fbf:59c8/128\nDNS = 1.1.1.1, 8.8.4.4, 78.157.42.101, 2606:4700:d0:0:c3a6:a287:08a3:f443\nPrivateKey = Dg5wcKOL261jikqFfdVTmyrK0q/dorvtST1NlMANVw8=\nListenPort = 51051\nMTU = 1299\n\n[Peer]\nPublicKey = Cr54gClrfPYT6MG+T35RlahNRgpIB3HR//vVmMGT3Cg=\nAllowedIPs = 10.8.208.0/24, 10.8.208.110/32, 2606:4700:d0:0:d817:7e21:ed0e:ace6/128\nEndpoint = 188.115.40.140:51820\nPersistentKeepalive = 25\n\n[Peer]\nPublicKey = Cr54gClrfPYT6MG+T35RlahNRgpIB3HR//vVmMGT3Cg=\nEndpoint = 162.159.63.126:51820\nAllowedIPs = 10.8.208.0/24, 10.8.208.110/32, 2606:4700:d0:0:d817:7e21:ed0e:ace6/128","[Interface]\nPrivateKey = 4KOyPlqz+BmPkPV0+Y3AUWRWdZ92PVujX6gQhqkqdXY=\nAddress = 172.16.0.2/32\nDNS = 10.202.10.10, 106.52.207.90\nMTU = 1420\n\n[Peer]\nPublicKey = Pu8rGqHuUVBt91wV3IeNYi9FVoxL0Jw8MGROL4Hh2Bc=\nAllowedIPs = 48.189.48.210/32, 21a7:cd64:6486:3b9a:ddc0:344e:2cf3:b586/128\nEndpoint = 185.93.245.19:52752\nPersistentKeepalive = 11"];
 
-const PLANS = [{"name":"Silver","icon":"◇","configs":[0]},{"name":"Gold","icon":"◆","configs":[1]},{"name":"Platinum","icon":"◈","configs":[2]},{"name":"Diamond","icon":"✦","configs":[3]},{"name":"Titanium","icon":"◇","configs":[4]}];
+const PLANS = [{"name":"Silver","icon":"◇","configs":[0]},{"name":"Gold","icon":"◆","configs":[1]},{"name":"Platinum","icon":"◈","configs":[2]},{"name":"Diamond","icon":"✦","configs":[3]}];
 
 
 let selectedPlan = "";
